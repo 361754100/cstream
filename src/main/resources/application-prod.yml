@@ -1,0 +1,21 @@
+server:
+  port: 8095
+  servlet:
+    context-path: /cstream
+
+#当消费者是服务集群时，生产者希望一个主题的消息只被一个订阅者消费一次，则要定义一个分组名
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: raw-senor-data
+          group: consumer_group1
+
+  rabbitmq:
+    addresses: localhost
+    port: 15672
+    username: admin
+    password: 123456
+
+
